@@ -8,7 +8,6 @@ A fast, flexible, and easy-to-use React app to create professional invoices inst
 
 * [Project Overview](#project-overview)
 * [Features](#features)
-* [Demo](#demo)
 * [Technologies Used](#technologies-used)
 * [Installation](#installation)
 * [Usage](#usage)
@@ -33,13 +32,6 @@ InvoiceBuilder lets users create, edit, preview, and export invoices as PDFs or 
 * Navigation with React Router
 * Global state management with React Context
 * User-friendly forms with validation
-
----
-
-## Demo
-
-*([If hosted, add your live demo link here](https://invoice-builder-v1.netlify.app/))*
-[Live Demo](#)
 
 ---
 

@@ -23,8 +23,8 @@ const InvoiceForm = () => {
     clientPhone: '',
     companyName: '',
     companyAddress: '',
-    email: '',
-    phone: '',
+    companyEmail: '',
+    companyPhone: '',
     taxRate: 0,
     notes: '',
     terms: '',
@@ -40,7 +40,12 @@ const InvoiceForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setInvoice((prev) => ({ ...prev, [name]: value }));
+    if (name === 'clientPhone' || name === 'companyPhone') {
+      const numericValue = value.replace(/\D/g, '').slice(0, 10);
+      setInvoice((prev) => ({ ...prev, [name]: numericValue }));
+    } else {
+      setInvoice((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleLogoUpload = (e) => {
@@ -228,28 +233,10 @@ const InvoiceForm = () => {
             )}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {['companyName', 'companyAddress', 'email', 'phone'].map((field) => (
-              <input
-                key={field}
-                type={field === 'email' ? 'email' : 'text'}
-                name={field}
-                value={invoice[field]}
-                onChange={handleChange}
-                placeholder={`Company ${field}`}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Client Info */}
-        <div>
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">Client Information</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[{ name: 'clientName', placeholder: 'Client Name' },
-            { name: 'clientAddress', placeholder: 'Client Address' },
-            { name: 'clientEmail', placeholder: 'Client Email', type: 'email' },
-            { name: 'clientPhone', placeholder: 'Client Phone Number', type: 'tel' }].map(({ name, placeholder, type = 'text' }) => (
+            {[{ name: 'companyName', placeholder: 'Company Name', type: 'text' },
+            { name: 'companyAddress', placeholder: 'Company Address', type: 'text' },
+            { name: 'companyEmail', placeholder: 'Company Email', type: 'email' },
+            { name: 'companyPhone', placeholder: 'Company Phone Number', type: 'tel' }].map(({ name, placeholder, type }) => (
               <input
                 key={name}
                 type={type}
@@ -257,8 +244,36 @@ const InvoiceForm = () => {
                 value={invoice[name]}
                 onChange={handleChange}
                 placeholder={placeholder}
+                maxLength={name === 'companyPhone' ? 10 : undefined}
+                pattern={name === 'companyPhone' ? "\\d{10}" : undefined}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
               />
+
+            ))}
+
+          </div>
+        </div>
+
+        {/* Client Info */}
+        <div>
+          <h3 className="text-xl font-semibold text-gray-800 mb-4">Client Information</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[{ name: 'clientName', placeholder: 'Client Name', type: 'text' },
+            { name: 'clientAddress', placeholder: 'Client Address', type: 'text' },
+            { name: 'clientEmail', placeholder: 'Client Email', type: 'email' },
+            { name: 'clientPhone', placeholder: 'Client Phone Number', type: 'tel' }].map(({ name, placeholder, type }) => (
+              <input
+                key={name}
+                type={type}
+                name={name}
+                value={invoice[name]}
+                onChange={handleChange}
+                placeholder={placeholder}
+                maxLength={name === 'clientPhone' ? 10 : undefined}
+                pattern={name === 'clientPhone' ? "\\d{10}" : undefined}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+              />
+
             ))}
           </div>
         </div>

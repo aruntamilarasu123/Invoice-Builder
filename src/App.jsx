@@ -1,15 +1,15 @@
 import React from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { useInvoice } from './context/InvoiceContext';
+import { useInvoice } from '../context/InvoiceContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Component imports
-import Home from '../pages/Home';
-import InvoiceList from './components/dashboard/InvoiceList';
-import InvoiceForm from './components/invoice/InvoiceForm';
-import InvoicePreview from './components/invoice/InvoicePreview';
-import Navbar from './components/ui/Navbar';
+import Home from './pages/Home';
+import InvoiceList from './components/InvoiceList';
+import InvoiceForm from './components/InvoiceForm';
+import InvoicePreview from './components/InvoicePreview';
+import Navbar from './components/Navbar';
 
 function App() {
   const { currentInvoice } = useInvoice();

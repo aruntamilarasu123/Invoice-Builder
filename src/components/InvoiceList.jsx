@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import InvoiceCard from './InvoiceCard';
 import { useInvoice } from '../../context/InvoiceContext';
-import ActionButton from '../ui/ActionButton';
+import ActionButton from './ActionButton';
 import { toast } from 'react-toastify';
 
 const InvoiceList = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import HomNavbar from '../src/components/ui/HomNavbar';
+import HomNavbar from '../components/HomNavbar';
 
 const Home = () => {
   return (
@@ -32,7 +32,7 @@ const Home = () => {
           {/* Right image (preserved as requested) */}
           <div className="w-full max-w-md mx-auto">
             <img
-              src="src/assets/invoice-.png"
+              src="./invoice-.png"
               alt="Invoice builder preview"
               onError={(e) => (e.currentTarget.style.display = 'none')}
               className="rounded-xl shadow-lg object-cover w-full h-auto border border-gray-200"

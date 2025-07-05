@@ -1,5 +1,5 @@
 import React from 'react';
-import ActionButton from '../ui/ActionButton';
+import ActionButton from './ActionButton';
 
 const InvoiceCard = ({ invoice, onView, onEdit, onDelete }) => {
   if (!invoice) return null;

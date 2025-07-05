@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import ActionButton from '../ui/ActionButton';
+import ActionButton from './ActionButton';
 import { Link } from 'react-router-dom';
 
 const InvoicePreview = ({ invoice }) => {
